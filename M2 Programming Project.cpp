@@ -17,12 +17,13 @@ int main()
 }
 
 
-void print(const int array[], int size) {
+void print(const int array[], int size) { //This function prints the contents of the array given to it. It needs the array and its size. The array must be a const int, 1D array, and its size must be pre-assigned
 	int counter = 0;
 
 	do {
 		cout << array[counter] << " ";
-		cout << "As you can tell, the size of this array is " << size << " Units" << endl;
 		counter++;
 	} while (counter < size);
-}
+	cout << endl;
+	cout << "As you can tell, the size of this array is " << size << " Units" << endl;
+} //This function WILL cout "size" amount of elements from the given array upon its completion
