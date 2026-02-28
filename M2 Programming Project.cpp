@@ -19,20 +19,17 @@ int main()
 
 int *ReverseArray(const int array[], int size) {
 	int* reverseArray = new int[size];
-	int counter = 0;
+	int counter = 1, counter2 = 0;
 
-	cout << "The first value of Reverse Array is: " << reverseArray[0] << endl;
-	cout << "The size is " << size << endl;
-	cout << "The operation is " << size - counter << endl;
-	cout << "The value of the given Array is: " << array[(size - counter)] << endl;
-
-	reverseArray[0] = array[(size - counter)];
-	cout << "The added value is " << reverseArray[0] << endl;
+	for (int x = 0; x < size; ++x) {
+		reverseArray[x] = 0;
+	}
 
 	do {
-		reverseArray[counter] = array[(size-counter)];
+		reverseArray[counter2] = array[(size - counter)];
 		counter++;
-	} while (counter < size);
+		counter2++;
+	} while (counter < size + 1);
 
 	return reverseArray;
 }
