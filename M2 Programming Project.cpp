@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 using namespace std;
 
 int main()
@@ -14,9 +15,8 @@ int main()
     }
 
     string line;
-    while (getline(DATAFILE, line)) {
-        cout << line << endl;
-    }
+    getline(DATAFILE, line, ' ');
+    cout << line << endl;
     
     cout << "This is the Course Grade Subproject!" << endl;
     return 0;
