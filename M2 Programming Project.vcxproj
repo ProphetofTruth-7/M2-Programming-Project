@@ -129,6 +129,9 @@
   <ItemGroup>
     <ClCompile Include="M2 Programming Project.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="StudentData.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
