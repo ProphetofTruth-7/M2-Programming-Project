@@ -8,7 +8,7 @@ using namespace std;
 struct Student {
     string name;
     int ID;
-    //POINTER TO ARRAY
+    int* dataArray;
     double averageScore;
     char letterGrade;
 };
@@ -21,20 +21,18 @@ int main()
         cout << "Error opening file!" << endl;
         return 1;
     }
-    int intermediary;
+    int totalStudents, totalGrades;
 
-    DATAFILE >> intermediary;
-    int constexpr totalStudents = intermediary;
-    DATAFILE >> intermediary;
-    int constexpr totalGrades = intermediary;
+    DATAFILE >> totalStudents;
+    DATAFILE >> totalGrades;
 
-    cout << totalStudents + 5;
+    class* dataArray = new class[totalStudents];
 
-    Student dataArray[totalStudents] = { {"Jordan", 26779, 55.4, 'F'}, { "Maya", 34303, 87.2, 'B' } };
+    Student dataArray[] = {{"Jordan", 26779, 55.4, 'F'}, {"Maya", 34303, 87.2, 'B'}};
     cout << "Name: " << dataArray[0].name << " ID: " << dataArray[0].ID << endl;
     cout << "Name: " << dataArray[1].name << " ID: " << dataArray[1].ID << endl;
 
-
+    delete[] dataArray;
 
     return 0;
 }
