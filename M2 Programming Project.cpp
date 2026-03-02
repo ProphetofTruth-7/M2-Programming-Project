@@ -14,7 +14,7 @@ int main()
 	print(originalArray, originalArraySize);
 	print(ReverseArray(originalArray, originalArraySize), originalArraySize);
 
-	delete ReverseArray(originalArray, originalArraySize);
+	delete ReverseArray(originalArray, originalArraySize);  //Is this properly deleted?
 
     return 0;
 }
