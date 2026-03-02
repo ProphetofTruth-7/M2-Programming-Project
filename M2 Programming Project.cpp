@@ -14,6 +14,8 @@ int main()
 	print(originalArray, originalArraySize);
 	print(ReverseArray(originalArray, originalArraySize), originalArraySize);
 
+	delete ReverseArray(originalArray, originalArraySize);
+
     return 0;
 }
 
@@ -31,7 +33,9 @@ int *ReverseArray(const int array[], int size) {
 		counter2++;
 	} while (counter < size + 1);
 
-	return reverseArray;
+	int *pointer = reverseArray;
+
+	return pointer;
 }
 
 void print(const int array[], int size) { //This function prints the contents of the array given to it. It needs the array and its size. The array must be a const int, 1D array, and its size must be pre-assigned
