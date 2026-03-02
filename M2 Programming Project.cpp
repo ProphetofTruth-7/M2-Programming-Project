@@ -8,8 +8,8 @@ void print(const int arr[], int size);
 
 int main()
 {
-	const int originalArraySize = 8; //User Choice. Change this value to alter the size of the Original Array
-	const int originalArray[originalArraySize] = {4, 6, 12, 39, 40, 36, 48, 33}; //User Choice. Change these values to alter what is contained within the Original Array
+	const int originalArraySize = 5; //User Choice. Change this value to alter the size of the Original Array
+	const int originalArray[originalArraySize] = {4, 6, 39, 48, 33}; //User Choice. Change these values to alter what is contained within the Original Array
 
 	print(originalArray, originalArraySize);
 	print(ReverseArray(originalArray, originalArraySize), originalArraySize);
