@@ -8,7 +8,7 @@ using namespace std;
 struct Student {
     string name;
     int ID;
-    int* dataArray;
+    int* dataArray;  //Supposed pointer to an array, put I'm not sure this is correct
     double averageScore;
     char letterGrade;
 };
