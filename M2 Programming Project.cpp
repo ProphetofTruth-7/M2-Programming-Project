@@ -32,8 +32,11 @@ int main()
 
     readFile(DATAFILE, ArrayOfStructs, totalStudents, totalGrades);
 
-   int currentStudent = 4;
-    cout << calcAverage(ArrayOfStructs, totalGrades, currentStudent) <<  endl;
+    for (int currentStudent = 0; currentStudent < totalStudents; currentStudent++) {
+        ArrayOfStructs[currentStudent].averageScore = calcAverage(ArrayOfStructs, totalGrades, currentStudent);
+    }
+    
+    cout << ArrayOfStructs[0].averageScore << endl;
 
     return 0;
 }
