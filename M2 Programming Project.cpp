@@ -36,7 +36,7 @@ int main()
         ArrayOfStructs[currentStudent].averageScore = calcAverage(ArrayOfStructs, totalGrades, currentStudent);
     }
     
-    cout << ArrayOfStructs[0].averageScore << endl;
+    cout << ArrayOfStructs[9].averageScore << endl;
 
     return 0;
 }
