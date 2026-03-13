@@ -8,10 +8,15 @@ using namespace std;
 struct Student {
     string name;
     int ID;
-    int* dataArray;  //Supposed pointer to an array, put I'm not sure this is correct
+    int Array[5];  //Supposed pointer to an array, put I'm not sure this is correct
     double averageScore;
     char letterGrade;
 };
+
+const int NUMBER = 10;
+
+void calcAverage(Student ArrayofStructs, int grades);
+
 
 int main()
 {
@@ -21,18 +26,29 @@ int main()
         cout << "Error opening file!" << endl;
         return 1;
     }
+
     int totalStudents, totalGrades;
 
     DATAFILE >> totalStudents;
     DATAFILE >> totalGrades;
 
-    class* dataArray = new class[totalStudents];
+    Student ArrayOfStructs[NUMBER];
 
-    Student dataArray[] = {{"Jordan", 26779, 55.4, 'F'}, {"Maya", 34303, 87.2, 'B'}};
-    cout << "Name: " << dataArray[0].name << " ID: " << dataArray[0].ID << endl;
-    cout << "Name: " << dataArray[1].name << " ID: " << dataArray[1].ID << endl;
+    for (int i = 0; i < totalStudents; i++) {
+        DATAFILE >> ArrayOfStructs[i].name;
+        DATAFILE >> ArrayOfStructs[i].ID;
+        for (int d = 0; d < totalGrades; d++) {
+            DATAFILE >> ArrayOfStructs[i].Array[d];
+        }
+    }
 
-    delete[] dataArray;
+    calcAverage(ArrayOfStructs, totalGrades);
 
     return 0;
+}
+
+void calcAverage(Student array[], int grades) {
+
+    cout << array[0].Array[0];
+
 }
