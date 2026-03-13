@@ -52,6 +52,7 @@ void readFile(ifstream& STUDENTDATAFILE, Student ArrayofStructs[], int& numStude
     }
 }
 
+
 double calcAverage(Student ArrayofStructs[], int grades, int currentStudent) {
     double sum = 0;
 
