@@ -15,7 +15,7 @@ struct Student {
 
 const int NUMBER = 10;
 
-void calcAverage(Student ArrayofStructs, int grades);
+void calcAverage(Student array[], int grades);
 
 
 int main()
