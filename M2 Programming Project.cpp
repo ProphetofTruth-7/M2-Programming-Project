@@ -13,9 +13,8 @@ struct Student {
     char letterGrade;
 };
 
-const int NUMBER = 10;
-
-void calcAverage(Student array[], int grades);
+void readFile(ifstream& STUDENTDATAFILE, Student ArrayofStructs[], int& numStudents, int& numGrades);
+double calcAverage(Student ArrayofStructs[], int grades, int currentStudent);
 
 
 int main()
@@ -27,28 +26,38 @@ int main()
         return 1;
     }
 
-    int totalStudents, totalGrades;
+    Student ArrayOfStructs[10];
 
-    DATAFILE >> totalStudents;
-    DATAFILE >> totalGrades;
+    int totalGrades, totalStudents;
 
-    Student ArrayOfStructs[NUMBER];
+    readFile(DATAFILE, ArrayOfStructs, totalStudents, totalGrades);
 
-    for (int i = 0; i < totalStudents; i++) {
-        DATAFILE >> ArrayOfStructs[i].name;
-        DATAFILE >> ArrayOfStructs[i].ID;
-        for (int d = 0; d < totalGrades; d++) {
-            DATAFILE >> ArrayOfStructs[i].Array[d];
-        }
-    }
-
-    calcAverage(ArrayOfStructs, totalGrades);
+   int currentStudent = 4;
+    cout << calcAverage(ArrayOfStructs, totalGrades, currentStudent) <<  endl;
 
     return 0;
 }
 
-void calcAverage(Student array[], int grades) {
 
-    cout << array[0].Array[0];
+void readFile(ifstream& STUDENTDATAFILE, Student ArrayofStructs[], int& numStudents, int& numGrades) {
+    STUDENTDATAFILE >> numStudents;
+    STUDENTDATAFILE >> numGrades;
 
+    for (int i = 0; i < numStudents; i++) {
+        STUDENTDATAFILE >> ArrayofStructs[i].name;
+        STUDENTDATAFILE >> ArrayofStructs[i].ID;
+        for (int d = 0; d < numGrades; d++) {
+            STUDENTDATAFILE >> ArrayofStructs[i].Array[d];
+        }
+    }
+}
+
+double calcAverage(Student ArrayofStructs[], int grades, int currentStudent) {
+    double sum = 0;
+
+    for (int s = 0; s < grades; s++) {
+        sum += ArrayofStructs[currentStudent].Array[s];
+    }
+
+   return (sum / grades);
 }
