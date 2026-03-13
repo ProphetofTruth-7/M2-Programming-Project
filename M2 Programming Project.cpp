@@ -1,6 +1,7 @@
 // This is the Course Grade Subproject. It
 
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <string>
 using namespace std;
@@ -8,7 +9,7 @@ using namespace std;
 struct Student {
     string name;
     int ID;
-    int Array[5];  //Supposed pointer to an array, put I'm not sure this is correct
+    int Array[5];  //Dynamically allocate this
     double averageScore;
     char letterGrade;
 };
@@ -16,6 +17,7 @@ struct Student {
 void readFile(ifstream& STUDENTDATAFILE, Student ArrayofStructs[], int& numStudents, int& numGrades);
 double calcAverage(Student ArrayofStructs[], int grades, int currentStudent);
 char calcLetter(Student ArrayofStructs[], int currentStudent);
+void collateReport(Student ArrayofStructs[], int numStudents);
 
 
 int main()
@@ -27,7 +29,7 @@ int main()
         return 1;
     }
 
-    Student ArrayOfStructs[10];
+    Student ArrayOfStructs[10];   //Dynamically allocate this
 
     int totalGrades, totalStudents;
 
@@ -37,29 +39,10 @@ int main()
         ArrayOfStructs[currentStudent].averageScore = calcAverage(ArrayOfStructs, totalGrades, currentStudent);
         ArrayOfStructs[currentStudent].letterGrade = calcLetter(ArrayOfStructs, currentStudent);
     }
-    
-    cout << ArrayOfStructs[9].averageScore << endl;
-    cout << ArrayOfStructs[9].letterGrade << endl;
+
+    collateReport(ArrayOfStructs, totalStudents);
 
     return 0;
-}
-
-char calcLetter(Student ArrayofStructs[], int currentStudent) {
-    if (ArrayofStructs[currentStudent].averageScore > 89.9) {
-        return 'A';
-    }
-    else if (ArrayofStructs[currentStudent].averageScore > 79.9) {
-        return 'B';
-    }
-    else if (ArrayofStructs[currentStudent].averageScore > 69.9) {
-        return 'C';
-    }
-    else if (ArrayofStructs[currentStudent].averageScore > 59.9) {
-        return 'D';
-    }
-    else {
-        return 'F';
-    }
 }
 
 
@@ -85,4 +68,32 @@ double calcAverage(Student ArrayofStructs[], int grades, int currentStudent) {
     }
 
    return (sum / grades);
+}
+
+
+char calcLetter(Student ArrayofStructs[], int currentStudent) {
+    if (ArrayofStructs[currentStudent].averageScore > 89.9) {
+        return 'A';
+    }
+    else if (ArrayofStructs[currentStudent].averageScore > 79.9) {
+        return 'B';
+    }
+    else if (ArrayofStructs[currentStudent].averageScore > 69.9) {
+        return 'C';
+    }
+    else if (ArrayofStructs[currentStudent].averageScore > 59.9) {
+        return 'D';
+    }
+    else {
+        return 'F';
+    }
+}
+
+
+void collateReport(Student ArrayofStructs[], int numStudents) {  //Instead of numStudents, you'll need currentSize for dynamic
+    cout << "Student Name" << setw(15) << "Student ID" << setw(15) << "Average Score" << setw(15) << "Letter Grade" << endl;
+
+    for (int i = 0; i < numStudents; i++) {
+        cout << ArrayofStructs[i].name << setw(15) << ArrayofStructs[i].ID << setw(15) << ArrayofStructs[i].averageScore << setw(15) << ArrayofStructs[i].letterGrade << endl;
+    }
 }
