@@ -15,6 +15,7 @@ struct Student {
 
 void readFile(ifstream& STUDENTDATAFILE, Student ArrayofStructs[], int& numStudents, int& numGrades);
 double calcAverage(Student ArrayofStructs[], int grades, int currentStudent);
+char calcLetter(Student ArrayofStructs[], int currentStudent);
 
 
 int main()
@@ -34,13 +35,32 @@ int main()
 
     for (int currentStudent = 0; currentStudent < totalStudents; currentStudent++) {
         ArrayOfStructs[currentStudent].averageScore = calcAverage(ArrayOfStructs, totalGrades, currentStudent);
+        ArrayOfStructs[currentStudent].letterGrade = calcLetter(ArrayOfStructs, currentStudent);
     }
     
     cout << ArrayOfStructs[9].averageScore << endl;
+    cout << ArrayOfStructs[9].letterGrade << endl;
 
     return 0;
 }
 
+char calcLetter(Student ArrayofStructs[], int currentStudent) {
+    if (ArrayofStructs[currentStudent].averageScore > 89.9) {
+        return 'A';
+    }
+    else if (ArrayofStructs[currentStudent].averageScore > 79.9) {
+        return 'B';
+    }
+    else if (ArrayofStructs[currentStudent].averageScore > 69.9) {
+        return 'C';
+    }
+    else if (ArrayofStructs[currentStudent].averageScore > 59.9) {
+        return 'D';
+    }
+    else {
+        return 'F';
+    }
+}
 
 
 void readFile(ifstream& STUDENTDATAFILE, Student ArrayofStructs[], int& numStudents, int& numGrades) {
