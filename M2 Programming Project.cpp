@@ -42,6 +42,7 @@ int main()
 }
 
 
+
 void readFile(ifstream& STUDENTDATAFILE, Student ArrayofStructs[], int& numStudents, int& numGrades) {
     STUDENTDATAFILE >> numStudents;
     STUDENTDATAFILE >> numGrades;
