@@ -9,12 +9,12 @@ using namespace std;
 struct Student {
     string name;
     int ID;
-    int Array[5];  //Dynamically allocate this
+    int *Array;  //Dynamically allocate this
     double averageScore;
     char letterGrade;
 };
 
-void readFile(ifstream& STUDENTDATAFILE, Student ArrayofStructs[], int& numStudents, int& numGrades);
+Student* readFile(ifstream& STUDENTDATAFILE, int& numStudents, int& numGrades);
 double calcAverage(Student ArrayofStructs[], int grades, int currentStudent);
 char calcLetter(Student ArrayofStructs[], int currentStudent);
 void collateReport(Student ArrayofStructs[], int numStudents);
@@ -29,11 +29,11 @@ int main()
         return 1;
     }
 
-    Student ArrayOfStructs[10];   //Dynamically allocate this
+    Student *ArrayOfStructs;   //Dynamically allocate this
 
     int totalGrades, totalStudents;
 
-    readFile(DATAFILE, ArrayOfStructs, totalStudents, totalGrades);
+   ArrayOfStructs = readFile(DATAFILE, totalStudents, totalGrades);
 
     for (int currentStudent = 0; currentStudent < totalStudents; currentStudent++) {
         ArrayOfStructs[currentStudent].averageScore = calcAverage(ArrayOfStructs, totalGrades, currentStudent);
@@ -46,17 +46,23 @@ int main()
 }
 
 
-void readFile(ifstream& STUDENTDATAFILE, Student ArrayofStructs[], int& numStudents, int& numGrades) {
+Student* readFile(ifstream& STUDENTDATAFILE, int& numStudents, int& numGrades) {
     STUDENTDATAFILE >> numStudents;
     STUDENTDATAFILE >> numGrades;
+
+    Student* ArrayofStructs = new Student[numStudents];
 
     for (int i = 0; i < numStudents; i++) {
         STUDENTDATAFILE >> ArrayofStructs[i].name;
         STUDENTDATAFILE >> ArrayofStructs[i].ID;
+
+        int* Array = new int[numGrades];
+        ArrayofStructs[i].Array = Array;
         for (int d = 0; d < numGrades; d++) {
             STUDENTDATAFILE >> ArrayofStructs[i].Array[d];
         }
     }
+    return ArrayofStructs;
 }
 
 
